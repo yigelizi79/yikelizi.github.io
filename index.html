@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算机网络管理</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36CFC9',
+                        accent: '#722ED1',
+                        dark: '#1D2129',
+                        light: '#F2F3F5'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .bg-gradient-primary {
+                background: linear-gradient(135deg, #165DFF 0%, #722ED1 100%);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+            .animate-float {
+                animation: float 6s ease-in-out infinite;
+            }
+            .animate-float-delay-1 {
+                animation: float 6s ease-in-out 1s infinite;
+            }
+            .animate-float-delay-2 {
+                animation: float 6s ease-in-out 2s infinite;
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="font-inter bg-gray-50 min-h-screen flex flex-col">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fa-solid fa-server text-primary text-3xl mr-3"></i>
+                        <span class="text-xl font-bold text-dark">计算机网络管理</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="#" class="border-primary text-dark border-b-2 px-1 pt-1 inline-flex items-center text-sm font-medium">
+                            <i class="fa-solid fa-home mr-1"></i> 首页
+                        </a>
+                        <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-b-2 px-1 pt-1 inline-flex items-center text-sm font-medium">
+                            <i class="fa-solid fa-book mr-1"></i> 课程章节内容
+                        </a>
+                        <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-b-2 px-1 pt-1 inline-flex items-center text-sm font-medium">
+                            <i class="fa-solid fa-question-circle mr-1"></i> 各章微课
+                        </a>
+                        <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-b-2 px-1 pt-1 inline-flex items-center text-sm font-medium">
+                            <i class="fa-solid fa-info-circle mr-1"></i> 试题库
+                        </a>
+                        <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-b-2 px-1 pt-1 inline-flex items-center text-sm font-medium">
+                            <i class="fa-solid fa-info-circle mr-1"></i> 在线交流
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <button type="button" class="p-2 rounded-md text-gray-500 hover:text-primary hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary sm:hidden">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- 主内容区 -->
+    <main class="flex-grow pt-24 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <!-- 左侧动画区域 -->
+                <div class="relative">
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent rounded-2xl blur opacity-30"></div>
+                    <div class="relative bg-white rounded-2xl shadow-xl overflow-hidden p-8">
+                        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-6">
+                            <span class="text-primary">计算机网络</span>管理
+                        </h2>
+                        <p class="text-gray-600 mb-8 text-lg">
+                            专业的网络设备管理、监控与教学平台，为网络工程师提供全面的网络管理解决方案。
+                        </p>
+                        <!-- 网络主题动画 -->
+                        <div class="relative h-[300px]">
+                            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-primary/10 rounded-full flex items-center justify-center animate-float">
+                                <div class="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center">
+                                    <div class="w-16 h-16 bg-primary/30 rounded-full flex items-center justify-center">
+                                        <div class="w-10 h-10 bg-primary/40 rounded-full flex items-center justify-center">
+                                            <div class="w-6 h-6 bg-primary rounded-full"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute top-[20%] left-[30%] w-12 h-12 bg-secondary/20 rounded-full animate-float-delay-1">
+                                <div class="w-8 h-8 bg-secondary/40 rounded-full mx-auto mt-2"></div>
+                            </div>
+                            
+                            <div class="absolute bottom-[25%] right-[25%] w-16 h-16 bg-accent/20 rounded-full animate-float-delay-2">
+                                <div class="w-10 h-10 bg-accent/40 rounded-full mx-auto mt-3"></div>
+                            </div>
+                            
+                            <div class="absolute top-[30%] right-[20%] w-10 h-10 bg-green-500/20 rounded-full animate-float">
+                                <div class="w-6 h-6 bg-green-500/40 rounded-full mx-auto mt-2"></div>
+                            </div>
+                            
+                            <div class="absolute bottom-[30%] left-[20%] w-14 h-14 bg-yellow-500/20 rounded-full animate-float-delay-1">
+                                <div class="w-8 h-8 bg-yellow-500/40 rounded-full mx-auto mt-3"></div>
+                            </div>
+                            <!-- 连接线 -->
+                            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M30,20 Q50,35 50,50 T70,80" stroke="rgba(22, 93, 255, 0.2)" fill="none" stroke-width="1" stroke-dasharray="5,5"/>
+                                <path d="M30,20 Q40,40 50,50" stroke="rgba(22, 93, 255, 0.2)" fill="none" stroke-width="1" stroke-dasharray="5,5"/>
+                                <path d="M80,30 Q65,45 50,50" stroke="rgba(22, 93, 255, 0.2)" fill="none" stroke-width="1" stroke-dasharray="5,5"/>
+                                <path d="M70,80 Q60,60 50,50" stroke="rgba(22, 93, 255, 0.2)" fill="none" stroke-width="1" stroke-dasharray="5,5"/>
+                                <path d="M20,70 Q35,55 50,50" stroke="rgba(22, 93, 255, 0.2)" fill="none" stroke-width="1" stroke-dasharray="5,5"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- 右侧登录区域 -->
+                <div class="relative">
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-30"></div>
+                    <div class="relative bg-white rounded-2xl shadow-xl overflow-hidden">
+                        <div class="p-8">
+                            <h2 class="text-2xl font-bold text-center mb-6">用户登录</h2>
+                            <!-- 切换用户类型 -->
+                            <div class="flex mb-6 rounded-lg overflow-hidden shadow-sm">
+                                <button type="button" class="flex-1 py-2 px-4 text-sm font-medium text-center text-white bg-primary transition-all duration-200" id="user-tab">
+                                    <i class="fa-solid fa-user mr-2"></i>一般用户
+                                </button>
+                                <button type="button" class="flex-1 py-2 px-4 text-sm font-medium text-center text-gray-700 bg-gray-100 hover:bg-gray-200 transition-all duration-200" id="admin-tab">
+                                    <i class="fa-solid fa-user-shield mr-2"></i>管理员
+                                </button>
+                            </div>
+                            <!-- 一般用户登录表单 -->
+                            <div id="user-login" class="space-y-4">
+                                <div>
+                                    <label for="user-username" class="block text-sm font-medium text-gray-700 mb-1">用户名</label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <i class="fa-solid fa-user text-gray-400"></i>
+                                        </div>
+                                        <input type="text" id="user-username" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" placeholder="请输入用户名">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label for="user-password" class="block text-sm font-medium text-gray-700 mb-1">密码</label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <i class="fa-solid fa-lock text-gray-400"></i>
+                                        </div>
+                                        <input type="password" id="user-password" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" placeholder="请输入密码">
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <input id="user-remember" name="user-remember" type="checkbox" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                        <label for="user-remember" class="ml-2 block text-sm text-gray-700">记住我</label>
+                                    </div>
+                                    <div class="text-sm">
+                                        <a href="#" class="font-medium text-primary hover:text-primary/80">忘记密码？</a>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <button type="button" id="user-login-btn" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]">
+                                        <i class="fa-solid fa-sign-in-alt mr-2"></i>登录
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- 管理员登录表单 -->
+                            <div id="admin-login" class="space-y-4 hidden">
+                                <div>
+                                    <label for="admin-username" class="block text-sm font-medium text-gray-700 mb-1">管理员账号</label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <i class="fa-solid fa-user-tie text-gray-400"></i>
+                                        </div>
+                                        <input type="text" id="admin-username" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" placeholder="请输入管理员账号">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label for="admin-password" class="block text-sm font-medium text-gray-700 mb-1">管理员密码</label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <i class="fa-solid fa-shield-alt text-gray-400"></i>
+                                        </div>
+                                        <input type="password" id="admin-password" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary" placeholder="请输入管理员密码">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <button type="button" id="admin-login-btn" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-accent hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]">
+                                        <i class="fa-solid fa-sign-in-alt mr-2"></i>管理员登录
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- 页脚 -->
+    <footer class="bg-dark text-center text-white py-8">
+                <p>© 2025 计算机网络管理. 保留所有权利.</p>
+    </footer>
+    <script>
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('bg-white/95', 'backdrop-blur-sm', 'shadow-lg');
+                navbar.classList.remove('bg-white', 'shadow-md');
+            } else {
+                navbar.classList.remove('bg-white/95', 'backdrop-blur-sm', 'shadow-lg');
+                navbar.classList.add('bg-white', 'shadow-md');
+            }
+        });
+        // 用户类型切换
+        const userTab = document.getElementById('user-tab');
+        const adminTab = document.getElementById('admin-tab');
+        const userLogin = document.getElementById('user-login');
+        const adminLogin = document.getElementById('admin-login');
+        
+        userTab.addEventListener('click', () => {
+            userTab.classList.remove('bg-gray-100', 'text-gray-700');
+            userTab.classList.add('bg-primary', 'text-white');
+            adminTab.classList.remove('bg-primary', 'text-white');
+            adminTab.classList.add('bg-gray-100', 'text-gray-700');
+            userLogin.classList.remove('hidden');
+            adminLogin.classList.add('hidden');
+        });
+        adminTab.addEventListener('click', () => {
+            adminTab.classList.remove('bg-gray-100', 'text-gray-700');
+            adminTab.classList.add('bg-primary', 'text-white');
+            userTab.classList.remove('bg-primary', 'text-white');
+            userTab.classList.add('bg-gray-100', 'text-gray-700');
+            adminLogin.classList.remove('hidden');
+            userLogin.classList.add('hidden');
+        });
+        // 表单动画效果
+        const loginButtons = document.querySelectorAll('button[type="button"]');
+        loginButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.add('scale-[0.95]', 'opacity-90');
+                setTimeout(() => {
+                    this.classList.remove('scale-[0.95]', 'opacity-90');
+                }, 200);
+            });
+        });
+        // 表单输入动画
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+        // 用户登录逻辑
+        document.getElementById('user-login-btn').addEventListener('click', () => {
+            const username = document.getElementById('user-username').value;
+            const password = document.getElementById('user-password').value;
+            // 示例登录逻辑：用户名为"user"，密码为"123456"
+            if (username === "user" && password === "123456") {
+                window.location.href = "course.html"; // 登录成功，跳转到 course.html
+            } else {
+                alert("用户名或密码错误！");
+            }
+        });
+        // 管理员登录逻辑
+        document.getElementById('admin-login-btn').addEventListener('click', () => {
+            const adminUsername = document.getElementById('admin-username').value;
+            const adminPassword = document.getElementById('admin-password').value;
+            // 示例登录逻辑：管理员用户名为"admin"，密码为"admin123"
+            if (adminUsername === "admin" && adminPassword === "admin123") {
+                window.location.href = "course.html"; // 管理员登录成功，跳转到 course.html
+            } else {
+                alert("管理员用户名或密码错误！");
+            }
+        });
+    </script>
+</body>
+</html>

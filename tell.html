@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线交流</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(13.jpg);
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+        .container {
+            width: 80%;
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        .chat-box {
+            height: 400px;
+            overflow-y: scroll;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        .message {
+            margin-bottom: 10px;
+            display: flex;
+        }
+        .message .username {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .message .content {
+            margin-left: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .input-group {
+            display: flex;
+        }
+        .input-group input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            margin-right: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        .input-group button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .input-group button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>在线交流</h1>
+        <div class="chat-box" id="chatBox">
+            <!-- 聊天记录会在这里显示 -->
+        </div>
+        <div class="input-group">
+            <input type="text" id="username" placeholder="请输入用户名">
+            <input type="text" id="messageInput" placeholder="请输入消息">
+            <button onclick="sendMessage()">发送</button>
+        </div>
+        <a href="course.html" style="display: block; margin-top: 20px; color: white; text-align: center;">返回课程页面</a> <!-- 添加返回链接 -->
+    </div>
+
+    <script>
+        // 获取页面元素
+        const chatBox = document.getElementById('chatBox');
+        const messageInput = document.getElementById('messageInput');
+        const usernameInput = document.getElementById('username');
+
+        // 发送消息的函数
+        function sendMessage() {
+            const username = usernameInput.value;
+            const message = messageInput.value;
+            if (username.trim() === '' || message.trim() === '') {
+                alert('用户名和消息不能为空！');
+                return;
+            }
+
+            // 创建消息元素
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.innerHTML = `<span class="username">${username}</span>: <span class="content">${message}</span>`;
+            chatBox.appendChild(messageElement);
+
+            // 清空输入框
+            messageInput.value = '';
+            // 滚动到聊天框底部
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+</body>
+</html>
